@@ -1,0 +1,196 @@
+@import 'variables';
+
+@font-face {
+    font-family: 'SF Mono';
+    src: url('/src/fonts/sf-mono/SFMonoRegular.otf');
+}
+
+@font-face {
+    font-family: 'Calibre';
+    src: url('/src/fonts/calibre/Calibre-Regular.woff2');
+}
+
+body {
+    font-family: 'Calibre';
+    color: $slate;
+    padding: 0 150px;
+    background-color: $navy;
+}
+
+main {
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 100px 0;
+    }
+
+    .hero {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        height: 100vh;
+        min-height: 100vh;
+
+        span {
+            color: $green;
+            font-family: 'SF Mono';
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        &__h2 {
+            height: auto;
+            line-height: 1;
+            font-family: 'Calibre';
+            font-weight: 600;
+            font-size: 80px;
+            color: $lightest-slate;
+        }
+
+        &__h3 {
+            font-family: 'Calibre';
+            font-weight: 600;
+            font-size: 80px;
+            color: $slate;
+            line-height: 0.8;
+        }
+
+        .hero__p {
+            max-width: 540px;
+            margin-top: 20px;
+            font-size: 20px;
+
+            span {
+                color: $green;
+                font-family: 'Calibre';
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .hero__container-btns {
+            display: flex;
+            margin-top: 50px;
+        }
+
+        &__btn:first-child {
+            width: auto;
+            height: 39px;
+            border: 1px solid $green;
+            border-radius: 4px;
+            padding: 12px 16px;
+            line-height: 1;
+            font-size: 13px;
+            font-family: 'SF Mono';
+            color: $green;
+            margin-right: 20px;
+
+            &:hover {
+                color: $green;
+                transition: 0.25s;
+                transform: translate(-4px, -4px);
+                outline: none;
+                box-shadow: 3px 3px 0 0 $green;
+            }
+        }
+
+        &__btn {
+            display: flex;
+            align-items: center;
+            width: auto;
+            height: 39px;
+            border: 1px solid $light-slate;
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin-right: 5px;
+            line-height: 1;
+            font-size: 13px;
+            font-family: 'SF Mono';
+            color: $green;
+            margin-right: 10px;
+
+            &:hover {
+                color: $green;
+                transition: 0.25s;
+                transform: translate(-4px, -4px);
+                outline: none;
+                box-shadow: 3px 3px 0 0 $green;
+            }
+
+            &:hover > svg {
+                stroke: $green;
+            }
+        }
+    }
+
+    .about {
+        &__content {
+            display: flex;
+            gap: 50px;
+        }
+
+        &__item {
+
+            svg {
+                width: 130px;
+                color: $green !important;
+            }
+        }
+    }
+}
+
+.section-title {
+    font-size: 32px;
+    margin: 10px 0 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    white-space: nowrap;
+    font-weight: 600;
+    color: $lightest-slate;
+    line-height: 1.1;
+}
+
+.section-title::before {
+    position: relative;
+    bottom: 4px;
+    counter-increment: section 1;
+    content: "0" counter(section) ".";
+    margin-right: 10px;
+    color: $green;
+    font-family: 'SF Mono';
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    position: relative;
+    top: -5px;
+    width: 300px;
+    height: 1px;
+    margin-left: 20px;
+    background-color: $slate;
+}
+
+.fade-in [class*="delay-"] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.fade-in.is-visible [class*="delay-"] {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in.is-visible .delay-1 { transition-delay: 0.1s; }
+.fade-in.is-visible .delay-2 { transition-delay: 0.2s; }
+.fade-in.is-visible .delay-3 { transition-delay: 0.3s; }
+.fade-in.is-visible .delay-4 { transition-delay: 0.4s; }
+.fade-in.is-visible .delay-5 { transition-delay: 0.5s; }
+
