@@ -1,10 +1,10 @@
 @font-face {
   font-family: "SF Mono";
-  src: url("/src/fonts/sf-mono/SFMonoRegular.otf");
+  src: url("../fonts/sf-mono/SFMonoRegular.otf");
 }
 @font-face {
   font-family: "Calibre";
-  src: url("/src/fonts/calibre/Calibre-Regular.woff2");
+  src: url("../fonts/calibre/Calibre-Regular.woff2");
 }
 body {
   font-family: "Calibre";
