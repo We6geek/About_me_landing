@@ -1,0 +1,94 @@
+// HEADER
+
+@media (max-width: 768px) {
+    .header {
+        backdrop-filter: blur(3px);
+    }
+
+    .side-elements {
+        &__contacts {
+            left: 10px !important;
+        }
+
+        &__mailto {
+            right: 10px !important;
+        }
+    }
+}
+
+// MAIN
+
+@media (max-width: 480px) {
+    body {
+        padding: 0 50px !important;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+    body {
+        padding: 0 75px !important;
+    }
+
+    .hero {
+        &__span {
+            font-size: 16px;
+        }
+
+        &__h2 {
+            font-size: 40px !important;
+        }
+
+        &__h3 {
+            font-size: 40px !important;
+        }
+
+        &__p {
+            font-size: 18px !important;
+        }
+        
+        &__container-btns {
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        &__btn:first-child {
+            margin-right: 10px !important;
+        }
+
+        &__btn {
+            margin-right: 0 !important;
+        }
+    }
+
+    .about {
+        &__content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px !important;
+        }
+
+        &__image {
+            position: relative;
+        }
+
+        &__image > img {
+            width: 100%;
+            max-width: 300px !important;
+        }
+
+        &__image::after {
+            max-width: 300px;
+            max-height: 450px;
+            top: 14px !important;
+            left: 14px !important;
+        }
+    }
+}
+
+@media (min-width: 769px) and  (max-width: 1024px) {
+    body {
+        padding: 0 100px;
+    }
+}
