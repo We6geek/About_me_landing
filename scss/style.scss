@@ -150,6 +150,17 @@ main {
             color: $green;
         }
 
+        &__list > li {
+        color: $light-slate;
+        counter-increment: list-counter;
+
+            &:before {
+                content: "0" counter(list-counter) ". ";
+                color: $green;
+                margin-right: 5px;
+            }
+        }
+
         &__image > img {
             filter: grayscale(75%) contrast(1);
             max-width: 300px;

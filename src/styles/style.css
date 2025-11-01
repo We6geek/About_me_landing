@@ -123,6 +123,15 @@ main .about__text {
 main .about__span {
   color: #64ffda;
 }
+main .about__list > li {
+  color: #a8b2d1;
+  counter-increment: list-counter;
+}
+main .about__list > li:before {
+  content: "0" counter(list-counter) ". ";
+  color: #64ffda;
+  margin-right: 5px;
+}
 main .about__image > img {
   filter: grayscale(75%) contrast(1);
   max-width: 300px;
