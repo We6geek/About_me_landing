@@ -14,7 +14,7 @@ class ScrollAnimations {
                 }
             });
         }, {
-            threshold: 0.5, // Срабатывает когда 10% элемента видно
+            threshold: 0.2, // Срабатывает когда 20% элемента видно
             rootMargin: '0px 0px -50px 0px'
         });
         
