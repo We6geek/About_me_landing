@@ -3,11 +3,13 @@
 @font-face {
     font-family: 'SF Mono';
     src: url('../fonts/sf-mono/SFMonoRegular.otf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Calibre';
     src: url('../fonts/calibre/Calibre-Regular.woff2');
+    font-display: swap;
 }
 
 body {
