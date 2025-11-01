@@ -1,7 +1,7 @@
 class SmoothScroll {
     constructor() {
         this.headerHeight = document.querySelector('.header')?.offsetHeight || 80;
-        this.scrollDuration = 1500; // Увеличиваем длительность скролла (в миллисекундах)
+        this.scrollDuration = 1500;
         this.init();
     }
     
@@ -15,28 +15,17 @@ class SmoothScroll {
                 this.scrollToSection(targetId);
             }
         });
-        
-        // Обработка навигационных ссылок
-        this.setupNavLinks();
     }
     
-    setupNavLinks() {
-        const navLinks = document.querySelectorAll('.header__link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const href = link.closest('a').getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    const targetId = href.substring(1);
-                    this.scrollToSection(targetId);
-                }
-            });
-        });
-    }
+    // Убираем метод setupNavLinks, так как он больше не нужен
+    // Основная логика теперь в общем обработчике кликов
     
     scrollToSection(sectionId) {
         const targetSection = document.getElementById(sectionId);
-        if (!targetSection) return;
+        if (!targetSection) {
+            console.warn(`Section with id "${sectionId}" not found`);
+            return;
+        }
         
         const targetPosition = this.calculateTargetPosition(targetSection);
         this.smoothScrollTo(targetPosition);
@@ -52,22 +41,28 @@ class SmoothScroll {
     }
     
     calculateOffset() {
-        // Учитываем высоту header'а и добавляем небольшой отступ
         return this.headerHeight + 20;
     }
     
-    // Кастомная функция плавного скролла с контролем скорости
     smoothScrollTo(targetPosition) {
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
+        
+        // Если расстояние очень маленькое, скроллим нативно
+        if (Math.abs(distance) < 100) {
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            return;
+        }
+        
         const startTime = performance.now();
         
-        // Функция анимации
         const animation = (currentTime) => {
             const timeElapsed = currentTime - startTime;
             const progress = Math.min(timeElapsed / this.scrollDuration, 1);
             
-            // easing function для более плавного движения
             const easeProgress = this.easeInOutCubic(progress);
             
             window.scrollTo(0, startPosition + (distance * easeProgress));
@@ -80,23 +75,19 @@ class SmoothScroll {
         requestAnimationFrame(animation);
     }
     
-    // Easing функция для плавного ускорения и замедления
     easeInOutCubic(t) {
         return t < 0.5 
             ? 4 * t * t * t 
             : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
     
-    // Альтернативные easing функции (можно экспериментировать)
-    
-    // Более медленное начало и конец
+    // Остальные методы остаются без изменений
     easeInOutQuart(t) {
         return t < 0.5 
             ? 8 * t * t * t * t 
             : 1 - Math.pow(-2 * t + 2, 4) / 2;
     }
     
-    // Очень плавное движение
     easeInOutExpo(t) {
         return t === 0 
             ? 0 
@@ -107,14 +98,12 @@ class SmoothScroll {
             : (2 - Math.pow(2, -20 * t + 10)) / 2;
     }
     
-    // Метод для скролла к конкретному элементу
     scrollToElement(element, offset = 0) {
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - this.headerHeight - offset;
         this.smoothScrollTo(offsetPosition);
     }
     
-    // Метод для скролла точно в центр viewport
     scrollToCenter(sectionId) {
         const targetSection = document.getElementById(sectionId);
         if (!targetSection) return;
@@ -124,14 +113,12 @@ class SmoothScroll {
         const elementHeight = elementRect.height;
         const windowHeight = window.innerHeight;
         
-        // Вычисляем позицию для центрирования элемента
         const scrollTo = elementAbsoluteTop - (windowHeight / 2) + (elementHeight / 2) - this.headerHeight;
         
         this.smoothScrollTo(scrollTo);
         history.pushState(null, null, `#${sectionId}`);
     }
     
-    // Метод для изменения скорости скролла
     setScrollDuration(duration) {
         this.scrollDuration = duration;
     }
@@ -139,10 +126,5 @@ class SmoothScroll {
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
-    const smoothScroll = new SmoothScroll();
-    
-    // Опционально: можно изменить скорость после инициализации
-    // smoothScroll.setScrollDuration(2000); // Еще медленнее
-    
-    window.smoothScroll = smoothScroll; // Делаем доступным глобально для отладки
+    new SmoothScroll();
 });
