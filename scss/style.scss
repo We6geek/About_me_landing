@@ -138,6 +138,40 @@ main {
                 color: $green !important;
             }
         }
+
+        &__text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            font-size: 20px;
+        }
+
+        &__span {
+            color: $green;
+        }
+
+        &__image > img {
+            filter: grayscale(75%) contrast(1);
+            max-width: 300px;
+        }
+
+        &__image:hover > img {
+            filter: none;
+            transition: 0.5s;
+        }
+
+        &__image::after {
+            border: 2px dashed #64ffda;
+            top: 14px;
+            left: 14px;
+            z-index: -1;
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+        }
     }
 }
 

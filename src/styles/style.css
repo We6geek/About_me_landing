@@ -1,10 +1,10 @@
 @font-face {
   font-family: "SF Mono";
-  src: url("../fonts/sf-mono/SFMonoRegular.otf");
+  src: url("/src/fonts/sf-mono/SFMonoRegular.otf");
 }
 @font-face {
   font-family: "Calibre";
-  src: url("../fonts/calibre/Calibre-Regular.woff2");
+  src: url("/src/fonts/calibre/Calibre-Regular.woff2");
 }
 body {
   font-family: "Calibre";
@@ -113,6 +113,34 @@ main .about__content {
 main .about__item svg {
   width: 130px;
   color: #64ffda !important;
+}
+main .about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 20px;
+}
+main .about__span {
+  color: #64ffda;
+}
+main .about__image > img {
+  filter: grayscale(75%) contrast(1);
+  max-width: 300px;
+}
+main .about__image:hover > img {
+  filter: none;
+  transition: 0.5s;
+}
+main .about__image::after {
+  border: 2px dashed #64ffda;
+  top: 14px;
+  left: 14px;
+  z-index: -1;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .section-title {
