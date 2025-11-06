@@ -64,7 +64,7 @@ ul, ol {
 body {
     font-family: 'Calibre';
     color: $slate;
-    padding: 0 150px;
+    padding: 150px 150px !important;
     background-color: $navy;
 }
 
@@ -80,6 +80,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
+    backdrop-filter: blur(5px);
     transition: transform 0.3s ease-in-out, background-color 0.3s ease;
 
     &__logo {
@@ -847,7 +848,7 @@ main {
 
 @media (max-width: 768px) {
     .header {
-        backdrop-filter: blur(3px);
+        backdrop-filter: blur(5px);
     }
 
     .side-elements {
@@ -928,12 +929,12 @@ main {
 @media (min-width: 481px) and (max-width: 768px) {
 
     body {
-        padding: 0 75px !important;
+        padding: 150px 75px !important;
     }
 }
 
-@media (min-width: 769px) and  (max-width: 1024px) {
+@media (min-width: 769px) and  (max-width: 900px) {
     body {
-        padding: 0 100px;
+        padding: 160px !important;
     }
 }
