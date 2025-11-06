@@ -64,7 +64,7 @@ ul, ol {
 body {
     font-family: 'Calibre';
     color: $slate;
-    padding: 150px 150px !important;
+    padding: 0 150px !important;
     background-color: $navy;
 }
 
@@ -80,7 +80,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px) !important;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease;
 
     &__logo {
@@ -320,7 +320,7 @@ body {
         width: 100%;
         height: 100%;
         background-color: rgba($navy, 0.8);
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px) !important;
         z-index: 998;
         opacity: 0;
         visibility: hidden;
@@ -848,7 +848,7 @@ main {
 
 @media (max-width: 768px) {
     .header {
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px) !important;
     }
 
     .side-elements {
