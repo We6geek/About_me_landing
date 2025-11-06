@@ -180,7 +180,6 @@ body {
         }
     }
 
-    // Бургер меню
     &__burger {
         display: none;
         flex-direction: column;
@@ -196,7 +195,6 @@ body {
         }
     }
 
-    // Стили для бургер-иконки
     .burger {
         display: flex;
         flex-direction: column;
@@ -216,7 +214,6 @@ body {
             transform-origin: center;
         }
 
-        // Анимация при активном состоянии
         &.active {
             span:nth-child(1) {
                 transform: rotate(45deg) translate(6px, 6px);
@@ -232,7 +229,6 @@ body {
         }
     }
 
-    // Мобильное меню
     .mobile-menu {
         position: fixed;
         top: 0;
@@ -316,7 +312,6 @@ body {
         }
     }
 
-    // Оверлей для мобильного меню
     .mobile-overlay {
         position: fixed;
         top: 0;
@@ -336,12 +331,10 @@ body {
         }
     }
 
-    // Убедитесь, что эти стили есть и они работают
     &--hidden {
         transform: translateY(-100%) !important; // Добавьте !important для приоритета
     }
 
-    // Адаптивные стили для header
     @media (max-width: 768px) {
         padding: 0 25px;
         height: 70px;
@@ -356,7 +349,6 @@ body {
     }
 }
 
-// Предотвращение скролла тела при открытом меню
 body.menu-open {
     overflow: hidden;
 }
@@ -364,7 +356,7 @@ body.menu-open {
 .side-elements {
     font-family: 'SF Mono';
     position: fixed;
-    z-index: 999; // Ниже чем header чтобы не перекрывать
+    z-index: 999;
     
     &__contacts {
         display: flex;
@@ -592,6 +584,197 @@ main {
             height: 100%;
             max-height: 375px;
         }
+    }
+
+    .experience {
+        padding: 100px 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .section-title {
+            counter-increment: section 1;
+        }
+
+        &__content {
+            display: grid;
+            grid-template-columns: minmax(200px, 300px) 1fr;
+            gap: 50px;
+            margin-top: 50px;
+            position: relative;
+
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        &__tabs {
+            display: flex;
+            flex-direction: column;
+            border-left: 2px solid rgba($light-slate, 0.2);
+            position: relative;
+
+            @media (max-width: 768px) {
+                flex-direction: row;
+                overflow-x: auto;
+                border-left: none;
+                border-bottom: 2px solid rgba($light-slate, 0.2);
+                padding-bottom: 10px;
+                
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+
+        &__tab {
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 2px solid transparent;
+            margin-left: -2px;
+            font-family: 'SF Mono';
+
+            &:hover {
+                background-color: rgba($green, 0.05);
+                color: $green;
+            }
+
+            &:not(.avtive){
+                color: $slate !important;
+            }
+
+            &.active {
+                color: $green !important;
+                border-left-color: $green;
+                background-color: rgba($green, 0.1);
+
+                @media (max-width: 768px) {
+                    border-left-color: transparent;
+                    border-bottom: 2px solid $green;
+                    margin-left: 0;
+                    margin-bottom: -12px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                white-space: nowrap;
+                border-left: none;
+                margin-left: 0;
+                flex-shrink: 0;
+                padding: 10px 15px;
+            }
+        }
+
+        &__tab-company {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        &__tab-period {
+            display: block;
+            font-size: 12px;
+            color: $slate;
+        }
+
+        &__panels {
+            position: relative;
+            min-height: 400px;
+        }
+
+        &__panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+
+            &.active {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: all;
+                position: relative;
+            }
+        }
+
+        &__panel-title {
+            font-size: 22px;
+            color: $light-slate;
+            margin-bottom: 10px;
+            font-weight: 600;
+
+            @media (max-width: 768px) {
+                font-size: 18px;
+            }
+        }
+
+        &__panel-company {
+            color: $green;
+        }
+
+        &__panel-period {
+            font-family: 'SF Mono';
+            font-size: 13px;
+            color: $slate;
+            margin-bottom: 25px;
+        }
+
+        &__panel-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+
+            li {
+                position: relative;
+                padding-left: 25px;
+                margin-bottom: 12px;
+                line-height: 1.6;
+                color: $slate;
+                font-family: 'SF Mono';
+
+                &:before {
+                    content: "▹";
+                    position: absolute;
+                    left: 0;
+                    color: $green;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        &__panel-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    }
+}
+
+.tech-tag {
+    background: rgba($green, 0.1);
+    color: $green;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-family: 'SF Mono';
+    font-size: 12px;
+    border: 1px solid rgba($green, 0.3);
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: rgba($green, 0.2);
+        transform: translateY(-2px);
     }
 }
 
