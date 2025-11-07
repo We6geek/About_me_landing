@@ -941,6 +941,13 @@ main {
             max-width: 500px;
         }
 
+        &__info {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         // Контактная информация
         &__details {
             margin-bottom: 40px;
