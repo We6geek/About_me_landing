@@ -69,7 +69,7 @@ Personal portfolio website showcasing 5+ years of experience in frontend develop
 ..........................................................
 
 🌟 Performance Metrics
-✅ 95+ Google PageSpeed Score
+✅ 100 Google PageSpeed Score
 
 ✅ 0.2s First Contentful Paint
 
