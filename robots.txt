@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /*
+Allow: /*.css
+Allow: /wp-includes/*.css
+Allow: /*.js
+Allow: */js/*.js*
+Disallow: /wp-admin
+Disallow: /wp-includes
+Disallow: /wp-login.php
+Disallow: /wp-register.php
+Disallow: /xmlrpc.php
+Disallow: *?s*
+Disallow: /search
+Disallow: */?author
+Disallow: */trackback/
+Disallow: */feed
+Disallow: */comments/
+Disallow: */comment
+Disallow: */uncategorized
+Disallow: */attachment/*
+Disallow: */wp-json/*
+
+Sitemap: https://we6geek.github.io/About_me_landing/sitemap.xml
