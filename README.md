@@ -17,7 +17,7 @@ HTML5 • CSS3 • Sass • Tailwind • BEM • JS • Git • Figma
 Personal portfolio website showcasing 5+ years of experience in frontend development and HTML/CSS engineering. Specializing in responsive web development, SEO optimization, and landing page improvements for arbitrage traffic.
 
 ## 🌐 Live Demo
-[**Visit Website**](https://torokhtunov.com) *(ссылка будет активна после деплоя)*
+[**Visit Website**](https://we6geek.github.io/About_me_landing/) *(ссылка будет активна после деплоя)*
 
 ---
 
