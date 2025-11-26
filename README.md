@@ -1,3 +1,17 @@
+👋 Hi, I'm Bogdan Torokhtunov
+Frontend Developer | HTML/CSS Engineer | Vue / React Learner
+
+💡 5+ years in web development
+⚙️ Focused on responsive layouts, SEO and clean code
+🚀 Currently learning Vue & TypeScript
+
+🛠 Tech Stack
+HTML5 • CSS3 • Sass • Tailwind • BEM • JS • Git • Figma
+
+📫 Contacts
+💬 Telegram: @ru_goverment
+💬 Email: Denvusher@gmail.com
+
 # 🎯 Torokhtunov Bogdan - Portfolio Website
 
 Personal portfolio website showcasing 5+ years of experience in frontend development and HTML/CSS engineering. Specializing in responsive web development, SEO optimization, and landing page improvements for arbitrage traffic.
