@@ -1,134 +1,67 @@
-class ExperienceTabs {
-    constructor() {
-        this.tabs = document.querySelectorAll('.experience__tab');
-        this.panels = document.querySelectorAll('.experience__panel');
-        this.init();
-    }
-    
-    init() {
-        this.tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetTab = tab.getAttribute('data-tab');
-                this.switchTab(targetTab);
-            });
-        });
-        
-        // Активируем первый таб по умолчанию
-        if (this.tabs.length > 0) {
-            this.switchTab(this.tabs[0].getAttribute('data-tab'));
-        }
-    }
-    
-    switchTab(targetTab) {
-        // Убираем активный класс со всех табов
-        this.tabs.forEach(tab => {
-            tab.classList.remove('active');
-        });
-        
-        // Скрываем все панели
-        this.panels.forEach(panel => {
-            panel.classList.remove('active');
-        });
-        
-        // Активируем выбранный таб
-        const activeTab = document.querySelector(`[data-tab="${targetTab}"]`);
-        const activePanel = document.getElementById(`${targetTab}-panel`);
-        
-        if (activeTab && activePanel) {
-            activeTab.classList.add('active');
-            
-            // Добавляем небольшую задержку для плавной анимации
-            setTimeout(() => {
-                activePanel.classList.add('active');
-            }, 50);
-        }
-    }
-}
-
-// Инициализация при загрузке DOM
-document.addEventListener('DOMContentLoaded', () => {
-    new ExperienceTabs();
-});
-
-// Добавьте этот код в существующий файл experience-tabs.js
+// experience-tabs.js - полная версия с переключением табов и индикатором прокрутки
 document.addEventListener('DOMContentLoaded', function() {
+    // Элементы
     const tabsContainer = document.querySelector('.experience__tabs');
     const scrollIndicator = document.querySelector('.scroll-indicator');
-    const dots = document.querySelectorAll('.scroll-indicator__dot');
+    const tabs = document.querySelectorAll('.experience__tab');
+    const panels = document.querySelectorAll('.experience__panel');
     
     if (!tabsContainer) return;
-    
-    // Проверяем, нужен ли скролл
+
+    // ===== ФУНКЦИОНАЛ ПЕРЕКЛЮЧЕНИЯ ТАБОВ =====
+    function switchTab(tabName) {
+        // Убираем активный класс у всех табов и панелей
+        tabs.forEach(tab => tab.classList.remove('active'));
+        panels.forEach(panel => panel.classList.remove('active'));
+        
+        // Добавляем активный класс выбранному табу и соответствующей панели
+        const selectedTab = document.querySelector(`[data-tab="${tabName}"]`);
+        const selectedPanel = document.getElementById(`${tabName}-panel`);
+        
+        if (selectedTab) selectedTab.classList.add('active');
+        if (selectedPanel) selectedPanel.classList.add('active');
+    }
+
+    // Добавляем обработчики кликов на табы
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabName = tab.getAttribute('data-tab');
+            switchTab(tabName);
+        });
+    });
+
+    // ===== ФУНКЦИОНАЛ ИНДИКАТОРА ПРОКРУТКИ =====
     function checkScrollability() {
         const isScrollable = tabsContainer.scrollWidth > tabsContainer.clientWidth;
-        
         if (isScrollable) {
             tabsContainer.classList.add('scrollable');
-            
-            // Добавляем анимацию подсказки при первом посещении
-            if (!sessionStorage.getItem('scrollHintShown')) {
-                setTimeout(() => {
-                    tabsContainer.classList.add('hint-animation');
-                    sessionStorage.setItem('scrollHintShown', 'true');
-                    
-                    // Убираем анимацию после завершения
-                    setTimeout(() => {
-                        tabsContainer.classList.remove('hint-animation');
-                    }, 7000);
-                }, 1000);
-            }
         }
     }
     
-    // Обновляем индикатор прокрутки
     function updateScrollIndicator() {
+        if (!scrollIndicator) return;
+        
         const scrollLeft = tabsContainer.scrollLeft;
         const scrollWidth = tabsContainer.scrollWidth - tabsContainer.clientWidth;
-        const scrollPercentage = scrollLeft / scrollWidth;
+        const dots = document.querySelectorAll('.scroll-indicator__dot');
         
-        // Обновляем активную точку
         dots.forEach((dot, index) => {
             const dotPosition = index / (dots.length - 1);
+            const scrollPercentage = scrollLeft / scrollWidth;
+            
             if (scrollPercentage >= dotPosition - 0.25 && scrollPercentage <= dotPosition + 0.25) {
                 dot.classList.add('active');
             } else {
                 dot.classList.remove('active');
             }
         });
-        
-        // Скрываем индикатор когда доскроллили до конца
-        if (scrollLeft >= scrollWidth - 10) {
-            scrollIndicator.style.opacity = '0.3';
-        } else {
-            scrollIndicator.style.opacity = '1';
-        }
     }
     
     // Инициализация
     checkScrollability();
     updateScrollIndicator();
     
-    // Слушаем события
+    // Слушатели событий
     tabsContainer.addEventListener('scroll', updateScrollIndicator);
     window.addEventListener('resize', checkScrollability);
-    
-    // Добавляем интерактивность для индикатора
-    scrollIndicator.addEventListener('click', function() {
-        const scrollAmount = tabsContainer.clientWidth * 0.8;
-        tabsContainer.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    });
-    
-    // Показываем/скрываем индикатор при hover
-    tabsContainer.addEventListener('mouseenter', function() {
-        scrollIndicator.style.opacity = '1';
-    });
-    
-    tabsContainer.addEventListener('mouseleave', function() {
-        if (tabsContainer.scrollLeft < tabsContainer.scrollWidth - tabsContainer.clientWidth - 10) {
-            scrollIndicator.style.opacity = '1';
-        }
-    });
 });
