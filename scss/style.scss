@@ -61,200 +61,11 @@ ul, ol {
     font-display: swap;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    height: 100%;
-}
-
-body {
+main {
     font-family: 'Calibre';
-    background-color: $navy;
     color: $slate;
-}
-
-.snap-scroll-container {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    width: 100vw;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    position: relative;
-}
-
-.snap-scroll-container::-webkit-scrollbar {
-    display: none;
-}
-
-.snap-scroll-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-main > section {
-    flex: 0 0 100vw;
-    height: 100vh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: none;
-}
-
-main > section.active {
-    display: block;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 100px 75px;
-    min-height: 100%;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.about .container,
-.experience .container,
-.work .container,
-.contact .container {
-    justify-content: flex-start;
-    padding-bottom: 150px;
-}
-
-.section-content {
-    width: 100%;
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 15px;
-}
-
-.section-content::-webkit-scrollbar {
-    width: 6px;
-}
-
-.section-content::-webkit-scrollbar-track {
-    background: rgba($slate, 0.1);
-    border-radius: 3px;
-}
-
-.section-content::-webkit-scrollbar-thumb {
-    background: rgba($green, 0.3);
-    border-radius: 3px;
-}
-
-.section-content::-webkit-scrollbar-thumb:hover {
-    background: rgba($green, 0.5);
-}
-
-.section-indicator {
-    position: fixed;
-    right: 30px;
-    top: 40%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.section-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: rgba($slate, 0.3);
-    border: 2px solid rgba($green, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.section-dot.active {
-    background: $green;
-    transform: scale(1.3);
-    border-color: $green;
-}
-
-.section-dot:hover {
-    background: $green;
-    transform: scale(1.2);
-}
-
-.section-dot:hover::after {
-    content: attr(data-section);
-    position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: $navy;
-    color: $green;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-family: 'SF Mono';
-    white-space: nowrap;
-    border: 1px solid $green;
-    z-index: 1001;
-}
-
-.slide-nav-buttons {
-    position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 20px;
-    z-index: 1000;
-}
-
-.slide-nav-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid $green;
-    background: rgba($navy, 0.8);
-    color: $green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.slide-nav-btn:hover {
-    background: $green;
-    color: $navy;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba($green, 0.3);
-}
-
-.slide-nav-btn:active {
-    transform: translateY(0);
-}
-
-.slide-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: rgba($slate, 0.2);
-    z-index: 1200;
-}
-
-.slide-progress-bar {
-    height: 100%;
-    background: $green;
-    width: 0%;
-    transition: width 0.3s ease;
+    padding: 0 150px !important;
+    background-color: $navy;
 }
 
 .header {
@@ -268,7 +79,7 @@ main > section.active {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1002;
+    z-index: 1000;
     backdrop-filter: blur(5px) !important;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease;
 
@@ -522,7 +333,7 @@ main > section.active {
     }
 
     &--hidden {
-        transform: translateY(-100%) !important;
+        transform: translateY(-100%) !important; // Добавьте !important для приоритета
     }
 
     @media (max-width: 768px) {
@@ -546,7 +357,7 @@ body.menu-open {
 .side-elements {
     font-family: 'SF Mono';
     position: fixed;
-    z-index: 1001;
+    z-index: 999;
     
     &__contacts {
         display: flex;
@@ -606,11 +417,15 @@ body.menu-open {
     }
 }
 
+
+
 main {
-    font-family: 'Calibre';
-    color: $slate;
-    background-color: $navy;
-    width: 100%;
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 100px 0;
+    }
 
     .hero {
         display: flex;
@@ -719,6 +534,7 @@ main {
         }
 
         &__item {
+
             svg {
                 width: 130px;
                 color: $green !important;
@@ -737,8 +553,8 @@ main {
         }
 
         &__list > li {
-            color: $light-slate;
-            counter-increment: list-counter;
+        color: $light-slate;
+        counter-increment: list-counter;
 
             &:before {
                 content: "0" counter(list-counter) ". ";
@@ -772,12 +588,11 @@ main {
     }
 
     .experience {
+        padding: 100px 0;
         min-height: 100vh;
         display: flex;
-        overflow-y: hidden;
         flex-direction: column;
         justify-content: center;
-        
 
         .section-title {
             counter-increment: section 1;
@@ -805,18 +620,22 @@ main {
             @media (max-width: 768px) {
                 flex-direction: row;
                 overflow-x: auto;
-                overflow-y: hidden;
+                overflow-y: hidden; // Блокируем вертикальный скролл
                 border-left: none;
                 border-bottom: 2px solid rgba($light-slate, 0.2);
                 padding-bottom: 10px;
                 
+                // Убираем стандартный скроллбар
                 &::-webkit-scrollbar {
                     display: none;
                 }
                 -ms-overflow-style: none;
                 scrollbar-width: none;
                 
+                // Отключаем инерционный скролл (для iOS)
                 -webkit-overflow-scrolling: auto;
+                
+                // Предотвращаем вертикальный скролл при горизонтальном
                 touch-action: pan-x;
             }
         }
@@ -837,7 +656,7 @@ main {
                 color: $green;
             }
 
-            &:not(.active){
+            &:not(.avtive){
                 color: $slate !important;
             }
 
@@ -860,6 +679,8 @@ main {
                 margin-left: 0;
                 flex-shrink: 0;
                 padding: 10px 15px;
+                
+                // Предотвращаем выделение при тапе
                 -webkit-tap-highlight-color: transparent;
                 user-select: none;
             }
@@ -954,6 +775,7 @@ main {
     }
 
     .work {
+        padding: 100px 0;
         min-height: 100vh;
 
         .section-title {
@@ -982,7 +804,6 @@ main {
             overflow: hidden;
 
             &:hover {
-                transition: none;
                 transform: translateY(-10px);
                 border-color: $green;
                 box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
@@ -1074,8 +895,13 @@ main {
     .fade-in .work__card {
         opacity: 0;
         transform: translateY(30px);
-        transition: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
 
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i}) {
+                transition-delay: #{$i * 0.1}s;
+            }
+        }
     }
 
     .fade-in.is-visible .work__card {
@@ -1084,6 +910,7 @@ main {
     }
 
     .contact {
+        padding: 100px 0;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -1121,6 +948,7 @@ main {
             justify-content: space-between;
         }
 
+        // Контактная информация
         &__details {
             margin-bottom: 40px;
         }
@@ -1169,6 +997,7 @@ main {
             }
         }
 
+        // Социальные ссылки
         &__social {
             display: flex;
             flex-direction: column;
@@ -1200,6 +1029,7 @@ main {
             }
         }
 
+        // Форма
         &__form-container {
             background: lighten($navy, 3%);
             border-radius: 8px;
@@ -1212,6 +1042,9 @@ main {
         }
 
         &__form {
+            .form__group {
+                margin-bottom: 25px;
+            }
 
             .form__label {
                 display: block;
@@ -1289,11 +1122,32 @@ main {
         }
     }
 
+    // Анимация загрузки
     @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
 
+    // Адаптивность
+    @media (max-width: 768px) {
+        .contact {
+            padding: 80px 0;
+
+            &__content {
+                margin-top: 30px;
+            }
+
+            &__intro {
+                font-size: 16px;
+            }
+
+            &__form-container {
+                padding: 25px 20px;
+            }
+        }
+    }
+
+    // Успешное состояние формы
     .form-success {
         display: flex;
         flex-direction: column;
@@ -1340,6 +1194,7 @@ main {
         position: relative;
     }
 
+    // Кнопка прокрутки наверх
     &__scroll-top {
         display: flex;
         align-items: center;
@@ -1376,6 +1231,7 @@ main {
         }
     }
 
+    // Социальные иконки
     &__social {
         display: flex;
         gap: 20px;
@@ -1405,6 +1261,7 @@ main {
         }
     }
 
+    // Копирайт
     &__copyright {
         text-align: center;
         color: $slate;
@@ -1420,6 +1277,7 @@ main {
         }
     }
 
+    // Адаптивность
     @media (max-width: 768px) {
         padding: 30px 0;
 
@@ -1491,23 +1349,6 @@ main {
     background-color: $slate;
 }
 
-.slide-content {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.active .slide-content {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.slide-content.delay-1 { transition-delay: 0.1s; }
-.slide-content.delay-2 { transition-delay: 0.2s; }
-.slide-content.delay-3 { transition-delay: 0.3s; }
-.slide-content.delay-4 { transition-delay: 0.4s; }
-.slide-content.delay-5 { transition-delay: 0.5s; }
-
 .fade-in [class*="delay-"] {
     opacity: 0;
     transform: translateY(30px);
@@ -1525,6 +1366,8 @@ main {
 .fade-in.is-visible .delay-4 { transition-delay: 0.4s; }
 .fade-in.is-visible .delay-5 { transition-delay: 0.5s; }
 
+// HEADER
+
 @media (max-width: 768px) {
     .header {
         backdrop-filter: blur(5px) !important;
@@ -1539,114 +1382,81 @@ main {
             right: 10px !important;
         }
     }
-
-    .section-indicator {
-        right: 15px;
-        gap: 12px;
-    }
-    
-    .section-dot {
-        width: 12px;
-        height: 12px;
-    }
-    
-    .slide-nav-buttons {
-        bottom: 20px;
-    }
-    
-    .slide-nav-btn {
-        width: 44px;
-        height: 44px;
-    }
-    
-    .container {
-        padding: 80px 45px;
-    }
-    
-    .section-content {
-        max-height: calc(100vh - 250px);
-    }
-
-    .contact {
-
-        &__content {
-            margin-top: 30px;
-        }
-
-        &__intro {
-            font-size: 16px;
-        }
-
-        &__form-container {
-            padding: 25px 20px;
-        }
-    }
 }
+
+// MAIN
 
 @media (max-width: 480px) {
-    .hero {
-        &__span {
-            font-size: 16px;
+    main {
+        padding: 0 50px !important;
+
+        .hero {
+            &__span {
+                font-size: 16px;
+            }
+
+            &__h2 {
+                font-size: 40px !important;
+            }
+
+            &__h3 {
+                font-size: 40px !important;
+            }
+
+            &__p {
+                font-size: 18px !important;
+            }
+            
+            &__container-btns {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            &__btn:first-child {
+                margin-right: 10px !important;
+            }
+
+            &__btn {
+                margin-right: 0 !important;
+            }
         }
 
-        &__h2 {
-            font-size: 40px !important;
-        }
+        .about {
+            &__content {
+                display: flex;
+                flex-direction: column !important;
+                align-items: center;
+                gap: 30px !important;
+            }
 
-        &__h3 {
-            font-size: 40px !important;
-        }
+            &__image {
+                position: relative;
+            }
 
-        &__p {
-            font-size: 18px !important;
-        }
-        
-        &__container-btns {
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+            &__image > img {
+                width: 100%;
+                max-width: 300px !important;
+            }
 
-        &__btn:first-child {
-            margin-right: 10px !important;
-        }
-
-        &__btn {
-            margin-right: 0 !important;
-        }
-    }
-
-    .about {
-        &__content {
-            display: flex;
-            flex-direction: column !important;
-            align-items: center;
-            gap: 30px !important;
-        }
-
-        &__image {
-            position: relative;
-        }
-
-        &__image > img {
-            width: 100%;
-            max-width: 300px !important;
-        }
-
-        &__image::after {
-            max-width: 300px;
-            max-height: 450px;
-            top: 14px !important;
-            left: 14px !important;
+            &__image::after {
+                max-width: 300px;
+                max-height: 450px;
+                top: 14px !important;
+                left: 14px !important;
+            }
         }
     }
 }
 
-.work__grid,
-.experience__content,
-.contact__content {
-    min-height: auto;
+@media (min-width: 481px) and (max-width: 768px) {
+
+    main {
+        padding: 150px 75px !important;
+    }
 }
 
-.header {
-    z-index: 1002;
+@media (min-width: 769px) and  (max-width: 900px) {
+    main {
+        padding: 160px !important;
+    }
 }
