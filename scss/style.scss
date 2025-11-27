@@ -602,7 +602,6 @@ main {
             display: grid;
             grid-template-columns: minmax(200px, 300px) 1fr;
             gap: 50px;
-            margin-top: 50px;
             position: relative;
 
             @media (max-width: 768px) {
