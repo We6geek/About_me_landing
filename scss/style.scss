@@ -471,12 +471,17 @@ main {
             }
         }
 
-        .hero__container-btns {
+        .hero__container-btn {
             display: flex;
             margin-top: 50px;
         }
 
-        &__btn:first-child {
+        .hero__container-social {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        #checkout {
             width: auto;
             height: 39px;
             border: 1px solid $green;
@@ -922,7 +927,6 @@ main {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
-            margin-top: 50px;
             align-items: start;
 
             @media (max-width: 968px) {
